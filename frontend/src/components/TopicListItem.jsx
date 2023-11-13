@@ -9,11 +9,11 @@ const sampleDataForTopicListItem = {
 };
 
 const TopicListItem = (props) => {
-  const { sampleDataForTopicList } = props;
+  const { topics } = props;
   return (
     <>
     <div className="topic-list__item">
-      <span>{sampleDataForTopicList.title}</span>
+      <span>{topics.title}</span>
     </div>
     </>
   );

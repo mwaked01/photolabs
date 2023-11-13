@@ -62,11 +62,11 @@ const PhotoList = () => {
   
   return (
     <ul className="photo-list">
-      {sampleDataForPhotoList.map((_, index) => (
+      {photos.map((_, index) => (
         <PhotoListItem
           className='photo-list'
-          key={sampleDataForPhotoList[index].id}
-          sampleDataForPhotoList={sampleDataForPhotoList[index]}
+          key={photos[index].id}
+          photos={photos[index]}
         />
       ))}
     </ul>
