@@ -3,7 +3,8 @@ import '../styles/HomeRoute.scss';
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
+  const { toggleModal } = props;
   const [favPhotos, setFavPhotos] = useState([]);
 
   const updateFavPhotos = (photo) => {
@@ -24,7 +25,7 @@ const HomeRoute = () => {
   return (
     <div className="home-route">
       <TopNavigationBar isFavPhotoExist={favPhotos.length > 0 ? 'yes' : ''} />
-      <PhotoList updateFavPhotos={updateFavPhotos} favPhotos={favPhotos} />
+      <PhotoList updateFavPhotos={updateFavPhotos} favPhotos={favPhotos} toggleModal={toggleModal}/>
     </div>
   );
 }

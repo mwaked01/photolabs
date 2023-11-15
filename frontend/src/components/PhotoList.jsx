@@ -59,7 +59,7 @@ import photos from '../mocks/photos';
 // ];
 
 const PhotoList = (props) => {
-  const { favPhotos, updateFavPhotos } = props;
+  const { favPhotos, updateFavPhotos, toggleModal } = props;
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
@@ -69,6 +69,7 @@ const PhotoList = (props) => {
           photo={photo}
           favPhotos={favPhotos}
           onFavClick={updateFavPhotos}
+          toggleModal={toggleModal}
         />
       ))}
     </ul>

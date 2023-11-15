@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 
 import HomeRoute from 'routes/HomeRoute';
-
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  // const photos = new Array(3).fill(null);
+  const [modal, setModal] = useState('off');
+
   return (
     <div className="App">
-      <HomeRoute/>
+      <HomeRoute toggleModal={setModal} />
+      {modal !== 'off' && <PhotoDetailsModal toggleModal={setModal} modal={modal} />}
     </div>
   );
 };
