@@ -7,8 +7,8 @@ import photos from '../mocks/photos';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { toggleModal, modal, favPhotos, updateFavPhotos } = props;
-  const isLiked = favPhotos.some((favPhoto) => favPhoto.id === modal.id);
+  const { toggleModal, selectedPhoto, favPhotos, updateFavPhotos } = props;
+  const isLiked = favPhotos.some((favPhoto) => favPhoto.id === selectedPhoto.id);
 
   const setSimilarPhotos = (modalPhoto) => {
     const selectedPhoto = photos.find(photo => photo.id === modalPhoto.id);
@@ -16,7 +16,7 @@ const PhotoDetailsModal = (props) => {
     return similarPhotos;
   }
 
-  const similarPhotos = ({ ...modal, similar_photos: setSimilarPhotos(modal) })
+  const similarPhotos = ({ ...selectedPhoto, similar_photos: setSimilarPhotos(selectedPhoto) })
 
   return (
     <div className="photo-details-modal">
@@ -26,15 +26,15 @@ const PhotoDetailsModal = (props) => {
       </button>
       <div className="photo-details-modal__images">
         {/* main image */}
-        <PhotoFavButton photo={modal} onFavClick={updateFavPhotos} likeButton={isLiked ? 'liked' : ''} />
-        <img src={modal.urls.full} alt="image" className="photo-details-modal__image" />
+        <PhotoFavButton photo={selectedPhoto} onFavClick={updateFavPhotos} likeButton={isLiked ? 'liked' : ''} />
+        <img src={selectedPhoto.urls.full} alt="image" className="photo-details-modal__image" />
         {/* photographer details  */}
         <div className="photo-details-modal__photographer-details">
-          <img className="photo-details-modal__photographer-profile" src={modal.user.profile} alt={modal.username} />
+          <img className="photo-details-modal__photographer-profile" src={selectedPhoto.user.profile} alt={selectedPhoto.username} />
           <footer className="photo-details-modal__photographer-info ">
-            <div>{modal.user.name}</div>
+            <div>{selectedPhoto.user.name}</div>
             <div className="photo-details-modal__photographer-location ">
-              {`${modal.location.city}, ${modal.location.country}`}
+              {`${selectedPhoto.location.city}, ${selectedPhoto.location.country}`}
             </div>
           </footer>
         </div>

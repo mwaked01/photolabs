@@ -5,6 +5,9 @@ import TopNavigationBar from '../components/TopNavigationBar';
 import photos from '../mocks/photos';
 const HomeRoute = (props) => {
   const { favPhotos, updateFavPhotos, toggleModal } = props;
+  // useEffect(() => {
+  //   console.log(favPhotos.length);
+  // });
   return (
     <div className="home-route">
       <TopNavigationBar isFavPhotoExist={favPhotos.length > 0 ? 'yes' : ''} />
