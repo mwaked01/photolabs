@@ -8,10 +8,27 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   const [modal, setModal] = useState('off');
 
+  const [favPhotos, setFavPhotos] = useState([]);
+
+  const updateFavPhotos = (photo) => {
+    const photoId = photo.id;
+    setFavPhotos((currentFavPhotos) => {
+      if (currentFavPhotos.some((favPhoto) => favPhoto.id === photo.id)) {
+        return currentFavPhotos.filter((favPhoto) => favPhoto.id !== photoId);
+      } else {
+        return [...currentFavPhotos, photo];
+      }
+    });
+  };
+
+  useEffect(() => {
+    console.log(favPhotos);
+  });
+
   return (
     <div className="App">
-      <HomeRoute toggleModal={setModal} />
-      {modal !== 'off' && <PhotoDetailsModal toggleModal={setModal} modal={modal} />}
+      <HomeRoute favPhotos={favPhotos} updateFavPhotos={updateFavPhotos} toggleModal={setModal} />
+      {modal !== 'off' && <PhotoDetailsModal toggleModal={setModal} modal={modal} favPhotos={favPhotos} updateFavPhotos={updateFavPhotos} />}
     </div>
   );
 };

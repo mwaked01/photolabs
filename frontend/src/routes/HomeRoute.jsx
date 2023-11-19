@@ -2,30 +2,13 @@ import React, { useState, useEffect } from 'react';
 import '../styles/HomeRoute.scss';
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
-
+import photos from '../mocks/photos';
 const HomeRoute = (props) => {
-  const { toggleModal } = props;
-  const [favPhotos, setFavPhotos] = useState([]);
-
-  const updateFavPhotos = (photo) => {
-    const photoId = photo.id;
-    setFavPhotos((currentFavPhotos) => {
-      if (currentFavPhotos.some((favPhoto) => favPhoto.id === photo.id)) {
-        return currentFavPhotos.filter((favPhoto) => favPhoto.id !== photoId);
-      } else {
-        return [...currentFavPhotos, photo];
-      }
-    });
-  };
-
-  useEffect(() => {
-    console.log(favPhotos);
-  });
-
+  const { favPhotos, updateFavPhotos, toggleModal } = props;
   return (
     <div className="home-route">
       <TopNavigationBar isFavPhotoExist={favPhotos.length > 0 ? 'yes' : ''} />
-      <PhotoList updateFavPhotos={updateFavPhotos} favPhotos={favPhotos} toggleModal={toggleModal}/>
+      <PhotoList updateFavPhotos={updateFavPhotos} favPhotos={favPhotos} toggleModal={toggleModal} photos={photos}/>
     </div>
   );
 }
