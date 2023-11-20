@@ -6,8 +6,8 @@ A single page application that allows the user to display photos filtered by cat
 
 ## Final Product
 
-!["Screenshot of Home page"](docs/homepage.png)
-!["Screenshot of Modal View"](docs/modal.png)
+!["Screenshot of Home page"](https://github.com/mwaked01/photolabs/blob/main/docs/homepage.png?raw=true)
+!["Screenshot of Modal View"](https://github.com/mwaked01/photolabs/blob/main/docs/modal.png?raw=true)
 
 ## Setup
 
