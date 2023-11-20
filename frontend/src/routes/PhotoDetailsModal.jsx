@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
-import photos from '../mocks/photos';
+// import photos from '../mocks/photos';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { toggleModal, selectedPhoto, favPhotos, updateFavPhotos } = props;
+  const { photos, toggleModal, selectedPhoto, favPhotos, updateFavPhotos } = props;
   const isLiked = favPhotos.some((favPhoto) => favPhoto.id === selectedPhoto.id);
 
   const setSimilarPhotos = (modalPhoto) => {

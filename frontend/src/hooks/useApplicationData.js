@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -22,15 +22,34 @@ function reducer(state, action) {
       return { ...state, selectedPhoto: action.payload };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
       return { ...state, selectedPhoto: action.payload === 'off' ? 'off' : state.selectedPhoto };
+    case 'SET_PHOTO_DATA':
+      return { ...state, photoData: action.payload };
+    case 'SET_TOPIC_DATA':
+      return { ...state, topicData: action.payload };
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
 }
 
 const useApplicationData = () => {
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/topics')
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+  }, []);
+
   const [state, dispatch] = useReducer(reducer, {
     selectedPhoto: 'off',
     favPhotos: [],
+    photoData: [],
+    topicData: []
   });
 
   const setPhotoSelected = (photo) => {
