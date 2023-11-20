@@ -6,14 +6,15 @@ import TopicListItem from "./TopicListItem";
 
 
 const TopicList = (props) => {
-  const {topics} = props;
+  const {topics,setTopicSelected} = props;
   return (
     <div className="top-nav-bar__topic-list">
       
       {topics.map((_, index) => (
         <TopicListItem
           key={topics[index].id}
-          topics={topics[index]}
+          topic={topics[index]}
+          setTopicSelected={setTopicSelected}
         />
       ))}
     </div>

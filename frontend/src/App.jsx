@@ -5,18 +5,15 @@ import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
-import photos from './mocks/photos';
-
 const App = () => {
   const {
     state,
     setPhotoSelected,
     updateToFavPhotos,
-    onLoadTopic,
-    onClosePhotoDetailsModal,
+    setTopicSelected,
   } = useApplicationData();
 
-  const { selectedPhoto, favPhotos, photoData, topicData } = state;
+  const { selectedPhoto, favPhotos, photoData, topicData,selectedTopic } = state;
 
   // const [modal, setModal] = useState('off');
 
@@ -33,13 +30,11 @@ const App = () => {
   //   });
   // };
 
-  useEffect(() => {
-    console.log(selectedPhoto);
-  });
+
 
   return (
     <div className="App">
-      <HomeRoute photos={photoData} topics={topicData} favPhotos={favPhotos} updateFavPhotos={updateToFavPhotos} toggleModal={setPhotoSelected} />
+      <HomeRoute photos={photoData} topics={topicData} favPhotos={favPhotos} updateFavPhotos={updateToFavPhotos} toggleModal={setPhotoSelected} setTopicSelected={setTopicSelected} />
       {selectedPhoto !== 'off' && <PhotoDetailsModal photos={photoData} toggleModal={setPhotoSelected} selectedPhoto={selectedPhoto} favPhotos={favPhotos} updateFavPhotos={updateToFavPhotos} />}
     </div>
   );

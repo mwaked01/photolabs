@@ -9,11 +9,16 @@ const sampleDataForTopicListItem = {
 };
 
 const TopicListItem = (props) => {
-  const { topics } = props;
+  const { topic,setTopicSelected } = props;
+
+  const handleTopicClick = () => {
+    setTopicSelected(topic.id)
+  }
+
   return (
     <>
     <div className="topic-list__item">
-      <span>{topics.title}</span>
+      <span onClick={handleTopicClick} >{topic.title}</span>
     </div>
     </>
   );
