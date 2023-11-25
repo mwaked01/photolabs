@@ -9,9 +9,11 @@
   text-decoration: none;
   font-weight: 500;
   color: #2b2b2b;
+  text-decoration-color: rgb(11, 180, 129);
 
   &:hover {
     text-decoration: overline;
-    color: #111;
+    text-decoration-color: rgb(11, 180, 129);
   }
+
 }

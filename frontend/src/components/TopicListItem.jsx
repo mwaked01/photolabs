@@ -1,15 +1,10 @@
 import React from "react";
-
 import "../styles/TopicListItem.scss";
 
-const sampleDataForTopicListItem = {
-  id: "1",
-  slug: "topic-1",
-  label: "Nature",
-};
-
 const TopicListItem = (props) => {
-  const { topic,setTopicSelected } = props;
+  const { topic, setTopicSelected, selectedTopic } = props;
+
+  const topicStyle = topic.id === selectedTopic ? { textDecoration: 'overline', color: 'rgb(11, 180, 129)' } : { }
 
   const handleTopicClick = () => {
     setTopicSelected(topic.id)
@@ -17,9 +12,9 @@ const TopicListItem = (props) => {
 
   return (
     <>
-    <div className="topic-list__item">
-      <span onClick={handleTopicClick} >{topic.title}</span>
-    </div>
+      <div className="topic-list__item">
+        <span onClick={handleTopicClick} style={topicStyle}>{topic.title}</span>
+      </div>
     </>
   );
 };
