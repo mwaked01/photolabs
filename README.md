@@ -6,9 +6,9 @@ A single page application that allows the user to display photos filtered by cat
 
 ## Final Product
 
-!["PhotoLabs Home page"](docs/PhotoLabs_HomePage.png)
-!["Photo Detail Modal View"](docs/PhotoLabs_PhotoDetails.png)
-!["Liked Photos Modal View"](docs/PhotoLabs_LikedPhotos.png)
+!["PhotoLabs Home page"](https://github.com/mwaked01/photolabs/blob/main/docs/PhotoLabs_HomePage.png)
+!["Photo Detail Modal View"](https://github.com/mwaked01/photolabs/raw/main/docs/PhotoLabs_PhotoDetails.png)
+!["Liked Photos Modal View"](https://github.com/mwaked01/photolabs/blob/main/docs/PhotoLabs_LikedPhotos.png)
 
 ## Setup
 
