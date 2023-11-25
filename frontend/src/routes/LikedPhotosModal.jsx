@@ -5,8 +5,8 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = (props) => {
-  const { photos, toggleModal, selectedPhoto, favPhotos, updateFavPhotos } = props;
+const LikedPhotosModal = (props) => {
+  const { photos, toggleFavModal, selectedPhoto, favPhotos, updateFavPhotos } = props;
   const isLiked = favPhotos.some((favPhoto) => favPhoto.id === selectedPhoto.id);
 
   const setSimilarPhotos = (modalPhoto) => {
@@ -40,6 +40,16 @@ const PhotoDetailsModal = (props) => {
         <header className='photo-details-modal__header'>
           Similar Photos
         </header>
+        {/* {modal.similar_photos && Object.keys(modal.similar_photos).length > 0 ? (
+          <PhotoList
+            photos={Object.values(modal.similar_photos)}
+            updateFavPhotos={updateFavPhotos}
+            favPhotos={favPhotos}
+            toggleModal={toggleModal}
+          />
+        ) : (
+          <p>No similar photos available.</p>
+        )} */}
         <PhotoList updateFavPhotos={updateFavPhotos} favPhotos={favPhotos} toggleModal={toggleModal} photos={Object.values(similarPhotos.similar_photos)} />
       </div>
     </div>
