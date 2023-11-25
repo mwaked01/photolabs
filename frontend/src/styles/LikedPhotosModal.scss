@@ -1,4 +1,4 @@
-.photo-details-modal {
+.liked-photos-modal {
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: fixed;
@@ -10,43 +10,44 @@
   border-radius: 12px;
 }
 
-.photo-details-modal__close-button {
-  display: flex;
-  justify-content:flex-end;
+.liked-photos-modal__close-button {
   background-color: white;
   border: none;
   color: white;
-  text-align: right;
+  text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  width: 98%;
+  cursor: pointer;
   margin: 8px;
-  img{
-    cursor: pointer;
-  }
 }
 
-.photo-details-modal__images {
-  background-color: white;
+.liked-photos-modal__images {
   height: 85%;
   overflow-y: scroll;
   margin-left: 36px;
-
+margin-right: 36px;
 }
 
-.photo-details-modal__image {
-  max-width: 95%;
-  border-radius: 8px;
-}
 
-.photo-details-modal__top-bar {
+.liked-photos-modal__top-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 16px;
+  margin-left: 16px;
   margin-top: 8px;
+  margin-bottom: 0px;
   align-items: center;
+}
+
+
+.liked-photos-modal__logo {
+  text-decoration: overline;
+  font-weight: 500;
+  font-size: 24px;
+  color: #111;
+  text-underline-position: auto;
+  margin-left: 24px;
 }
 
 .photo-details-modal__photographer-details {

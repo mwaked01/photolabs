@@ -8,7 +8,8 @@ export const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   SELECT_TOPIC: 'SELECT_TOPIC',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
-  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
+  DISPLAY_MODAL: 'DISPLAY_MODAL'
 };
 
 function reducer(state, action) {
@@ -24,14 +25,15 @@ function reducer(state, action) {
       return { ...state, selectedPhoto: action.payload };
     case ACTIONS.SELECT_TOPIC:
       return { ...state, selectedTopic: action.payload };
-    case ACTIONS.DISPLAY_PHOTO_DETAILS:
-      return { ...state, selectedPhoto: action.payload === 'off' ? 'off' : state.selectedPhoto };
+    
     case 'SET_PHOTO_DATA':
       return { ...state, photoData: action.payload };
     case 'SET_TOPIC_DATA':
       return { ...state, topicData: action.payload };
     case 'GET_PHOTOS_BY_TOPICS':
       return { ...state, photoData: action.payload };
+    case ACTIONS.DISPLAY_MODAL:
+      return { ...state, displayModal: action.payload };
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
@@ -50,11 +52,12 @@ const useApplicationData = () => {
 
 
   const [state, dispatch] = useReducer(reducer, {
-    selectedPhoto: 'off',
+    selectedPhoto: false,
     favPhotos: [],
     photoData: [],
     topicData: [],
-    selectedTopic: 0
+    selectedTopic: 0,
+    displayModal: false,
   });
 
 
@@ -70,7 +73,7 @@ const useApplicationData = () => {
     }
   }, [state.selectedTopic]);
 
-  
+
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
@@ -87,12 +90,17 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_TOPIC, payload: topic });
   };
 
+  const setModal = (status) => {
+    dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: status });
+  };
+
   return {
     state,
     setPhotoSelected,
     updateToFavPhotos,
     onClosePhotoDetailsModal,
-    setTopicSelected
+    setTopicSelected,
+    setModal
   };
 };
 
